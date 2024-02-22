@@ -11,7 +11,7 @@ COPY . .
 RUN pip install --no-cache-dir gunicorn
 
 # Expor a porta utilizada pelo seu aplicativo
-EXPOSE 12345
+EXPOSE 12334
 
 # Executar o programa Python
 CMD ["python", "updateChat.py"]
