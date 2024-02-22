@@ -126,7 +126,7 @@ def main():
     print("Meu IP:", ip)
 
     # Lista para armazenar os endereços IP dos outros membros do chat (pré-definidos).
-    peers = [("192.16.103.9", numIp)]  # Adiciona o seu próprio IP à lista de pares
+    peers = [("172.16.103.1", numIp), ("172.16.103.2", numIp), ("172.16.103.3", numIp), ("172.16.103.4", numIp), ("172.16.103.5", numIp), ("172.16.103.6", numIp), ("172.16.103.7", numIp), ("172.16.103.8", numIp), ("172.16.103.9", numIp) ("172.16.103.10", numIp), ("172.16.103.11", numIp), ("172.16.103.12", numIp), ("172.16.103.13", numIp), ("172.16.103.14", numIp)]  # Adiciona o seu próprio IP à lista de pares
 
     # Lista para armazenar os pares online.
     online_peers = []
