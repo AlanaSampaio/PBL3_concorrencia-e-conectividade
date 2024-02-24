@@ -1,16 +1,19 @@
 
 
-# TEC502 - ZapZaps 2.0
+# <div align="center">TEC502 - ZapZaps 2.0</div>
 
-Este projeto consiste em um sistema de chat implementado em Python utilizando sockets UDP para comunicação entre os usuários. O sistema permite que múltiplos usuários se comuniquem em tempo real, sem a necessidade de uma conexão persistente, o que é ideal para ambientes distribuídos.
+<em>
+  A comunicação em tempo real é crucial para empresas no mundo globalizado. Softwares de mensagens instantâneas facilitam essa comunicação, quebrando barreiras de tempo e espaço.. Fez-se necessario o desenvolvimento de um novo software de mensagens instantâneas baseado no modelo peer-to-peer (P2P) que atenda aos requisitos específicos de descentralização, confiabilidade e simplicidade.  O sistema atual envia mensagens, mas não as recebe, tornando-o incompleto e inadequado para comunicação bidirecional em ambientes distribuídos. Este projeto fornece uma base sólida para um sistema de chat, destaca a importância da sincronização em ambientes distribuídos e opta pelo algoritmo  Lamport para garantir a consistência das mensagens. A implementação da sincronização é feita usando streams Python, que combinam o carimbo de data/hora do relógio  Lamport com o endereço IP  da pessoa que envia a mensagem ao comando. Embora exista funcionalidade para  envio de mensagens, o sistema precisa de melhorias para permitir o recebimento de mensagens e implementar recursos adicionais, como criptografia, interface gráfica e autenticação.
+</em<>
+
+---
 
 ## Índice
 
 - [Introdução](#introducao)
 - [Fundamentação Teórica](#fundamentacao)
-- [Desenvolvimento](#desenvolvimento)
 - [Metodologia](#metodologia)
-- [Funcionalidades e Interfaces](#funcionalidade)
+- [Implementação](#implementacao)
 - [Como Executar a Aplicação](#execucao)
 - [Áreas para Melhorias e Expansão](#melhoria)
 - [Considerações Finais](#consideracoes)
@@ -19,27 +22,45 @@ Este projeto consiste em um sistema de chat implementado em Python utilizando so
 
 ## Introdução <a id="introducao"></a>
 
-Os aplicativos de mensagens desempenham um papel fundamental no ambiente corporativo, transformando a forma como as organizações se comunicam e colaboram. Em um mundo empresarial cada vez mais dinâmico e globalizado, a capacidade de trocar informações de maneira rápida e eficiente é crucial para o sucesso de qualquer empreendimento. Os aplicativos de mensagens oferecem uma plataforma instantânea para a comunicação, quebrando as barreiras de tempo e espaço, permitindo que equipes se conectem instantaneamente, independentemente da localização geográfica.
+  Os dispositivos móveis, como smartphones e tablets, expandem a nossa conectividade ao mundo de hoje, facilitando a comunicação instantânea. Aplicativos de mensagens como chat de texto desempenham um papel importante nesta comunicação global.  
+  
+  O problema é desenvolver um novo software de mensagens P2P que atenda a requisitos específicos, como confiabilidade e uma interface específica. As restrições incluem o uso de contêineres Docker e a exclusão de estruturas de mensagens. Os recursos desejados são mensagens em tempo real e sincronização entre usuários, com interface shell script.  
+  
+  Para contribuir para isso, enfatizamos o desenvolvimento de  software que melhore a confiabilidade da comunicação. Dois métodos são propostos para garantir a continuidade do programa, mesmo em situações de perda de conexão. A implantação usando contêineres Docker e a remoção da estrutura de mensagens é eficiente e simples. 
+  
+  Na abordagem aplicada, foi implementada uma estratégia confiável de confirmação de entrega. O sistema desenvolvido permite mensagens em tempo real entre usuários, mas a função de recebimento ainda precisa ser ajustada.
 
 ---
 
 ## Fundamentação Teórica <a id="fundamentacao"></a>
 
-### Sockets UDP
+### Sockets UDP:
 
-A comunicação em rede é realizada utilizando o protocolo UDP (User Datagram Protocol), que é ideal para aplicações em tempo real, como um chat, devido à sua simplicidade e baixa sobrecarga.
+- Protocolo utilizado para comunicação em rede.
+- Ideal para aplicativos em tempo real devido à sua simplicidade e baixa sobrecarga.
 
-### Relógio de Lamport
+### Relógio de Lamport:
 
-O sistema utiliza um relógio de Lamport para sincronização de eventos em um ambiente distribuído. Isso garante que a ordem das mensagens seja preservada, mesmo quando estas são enviadas e recebidas de diferentes fontes.
+- Utilizado para sincronização de eventos em ambientes distribuídos.
+- Garante a preservação da ordem das mensagens, mesmo de fontes distintas.
+
+### Mecanismo de confirmação de entrega (ACK):
+
+- Essencial para garantir a integridade da comunicação.
+- Confirmação da recepção das mensagens para assegurar sua entrega segura.
+
+### Contêineres Docker:
+
+- Facilita o desenvolvimento e a implantação do sistema.
+- Garante portabilidade e consistência em diferentes ambientes de execução.
+
+### Interface em shell script:
+
+- Proporciona uma experiência de usuário familiar e acessível.
+- Simplifica a interação com o sistema, tornando-o mais intuitivo para os usuários.
 
 ---
 
-## Desenvolvimento <a id="desenvolvimento"></a>
-
-O produto em forma de software foi desenvolvido utilizando a linguagem de programação Python na versão 3.11. Foram utilizadas as bibliotecas padrão da linguagem, incluindo socket, threading, json, time, os, entre outras. O sistema foi construído para operar em um ambiente descentralizado, sem a necessidade de um servidor central, proporcionando uma solução simples e eficiente para comunicação entre os membros de uma empresa.
-
----
 ## Metodologia <a id="metodologia"></a>
 
 Na metodologia de desenvolvimento deste sistema de mensagens instantâneas baseado em P2P (peer-to-peer), a sincronização desempenha um papel crucial para garantir a consistência das operações e a ordem das mensagens trocadas entre os usuários. Optou-se por utilizar relógios lógicos, em vez de relógios baseados em tempo absoluto, devido às características de ambientes distribuídos onde múltiplos dispositivos interagem.
@@ -52,13 +73,16 @@ A implementação da sincronização foi realizada utilizando threads em Python,
 
 ---
 
-## Funcionalidades e Interfaces <a id="funcionalidade"></a>
+## Implementação <a id="implementacao"></a>
 
-O sistema permite que os usuários realizem as seguintes operações:
-
-- Envio de mensagens em tempo real.
-- Sincronização de mensagens através do relógio de Lamport.
-
+  Na implementação deste sistema, foi aplicada uma abordagem com fluxos Python para lidar com diversas funções, como envio e recebimento de mensagens, verificação de presença online e exibição de mensagens. Esta estrutura permite operações assíncronas, garantindo uma comunicação eficiente e síncrona entre os usuários. 
+  
+  O algoritmo  Lamport é utilizado para classificar mensagens, combinando seus carimbos de data e hora com o endereço IP do remetente para garantir consistência mesmo em ambientes distribuídos. Esta implementação destaca-se pela sua eficiência e  capacidade de gerir a complexidade dos sistemas distribuídos, proporcionando uma experiência de comunicação fiável e ordenada aos utilizadores. 
+    
+  Além disso,  a confiabilidade da entrega de mensagens foi aprimorada através do uso de confirmações (ACKs), adicionando uma camada adicional de segurança para garantir a entrega precisa, mesmo em condições de conexão instáveis. 
+      
+  O uso de contêineres Docker facilita o desenvolvimento, o teste e a implantação do sistema, garante a consistência do tempo de execução entre plataformas e simplifica o processo de entrega de software.
+  
 ---
 
 ## Como Executar a Aplicação <a id="execucao"></a>
@@ -79,6 +103,7 @@ Este projeto pode ser expandido e melhorado de várias maneiras, incluindo:
 
 - Desenvolvimento de uma interface gráfica para melhorar a usabilidade.
 - Recebimento das mensagens pelos usuários.
+- Implementação do shell.
 - Implementação de um sistema de autenticação para garantir a segurança.
 - Melhoria na gestão de erros e exceções para uma experiência mais robusta.
 
