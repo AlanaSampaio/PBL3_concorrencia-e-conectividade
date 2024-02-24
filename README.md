@@ -2,9 +2,9 @@
 
 # <div align="center">TEC502 - ZapZaps 2.0</div>
 
-<em>
+<div><em>
   A comunicação em tempo real é crucial para empresas no mundo globalizado. Softwares de mensagens instantâneas facilitam essa comunicação, quebrando barreiras de tempo e espaço.. Fez-se necessario o desenvolvimento de um novo software de mensagens instantâneas baseado no modelo peer-to-peer (P2P) que atenda aos requisitos específicos de descentralização, confiabilidade e simplicidade.  O sistema atual envia mensagens, mas não as recebe, tornando-o incompleto e inadequado para comunicação bidirecional em ambientes distribuídos. Este projeto fornece uma base sólida para um sistema de chat, destaca a importância da sincronização em ambientes distribuídos e opta pelo algoritmo  Lamport para garantir a consistência das mensagens. A implementação da sincronização é feita usando streams Python, que combinam o carimbo de data/hora do relógio  Lamport com o endereço IP  da pessoa que envia a mensagem ao comando. Embora exista funcionalidade para  envio de mensagens, o sistema precisa de melhorias para permitir o recebimento de mensagens e implementar recursos adicionais, como criptografia, interface gráfica e autenticação.
-</em<>
+</em><div/>
 
 ---
 
@@ -30,6 +30,10 @@
   
   Na abordagem aplicada, foi implementada uma estratégia confiável de confirmação de entrega. O sistema desenvolvido permite mensagens em tempo real entre usuários, mas a função de recebimento ainda precisa ser ajustada.
 
+  Abaixo segue imagem da representação da funcionalidade do problema proposto:
+
+  ![Problema proposto](https://github.com/AlanaSampaio/PBL3_concorrencia-e-conectividade/blob/main/imagem%20readme/1.jpg)
+  
 ---
 
 ## Fundamentação Teórica <a id="fundamentacao"></a>
@@ -82,6 +86,10 @@ A implementação da sincronização foi realizada utilizando threads em Python,
   Além disso,  a confiabilidade da entrega de mensagens foi aprimorada através do uso de confirmações (ACKs), adicionando uma camada adicional de segurança para garantir a entrega precisa, mesmo em condições de conexão instáveis. 
       
   O uso de contêineres Docker facilita o desenvolvimento, o teste e a implantação do sistema, garante a consistência do tempo de execução entre plataformas e simplifica o processo de entrega de software.
+
+  Na figura abaixo representa a funcionalidade do sistema atualmente:
+
+  ![funcionalidade atul do sistema](https://github.com/AlanaSampaio/PBL3_concorrencia-e-conectividade/blob/main/imagem%20readme/2.jpg)
   
 ---
 
